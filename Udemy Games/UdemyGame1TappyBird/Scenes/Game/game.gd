@@ -15,9 +15,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_cancel"):
-		GameManager.load_main_scene()
 
 func spawn_pipes():
 	var spawn_y: float = randf_range(upper_spawner.position.y, lower_spawner.position.y)
