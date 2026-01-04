@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="UdemyGame1TappyBird"
-run/main_scene="uid://cx5qukjvtt8jk"
+run/main_scene="uid://ceywvvn26rr4j"
 config/features=PackedStringArray("4.5", "Mobile")
 config/icon="res://icon.svg"
+
+[autoload]
+
+GameManager="*res://Globals/GameManager.gd"
 
 [display]
 

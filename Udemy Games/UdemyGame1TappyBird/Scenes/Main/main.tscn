@@ -1,0 +1,137 @@
+[gd_scene load_steps=11 format=3 uid="uid://ceywvvn26rr4j"]
+
+[ext_resource type="AudioStream" uid="uid://beosc72mbtk1y" path="res://Assets/audio/bgm_menu.mp3" id="1_5yls4"]
+[ext_resource type="Script" uid="uid://c1poluubhgqmr" path="res://Scenes/Main/main.gd" id="1_p6jpk"]
+[ext_resource type="Texture2D" uid="uid://dlgd014k8bmr8" path="res://Assets/background/sky.png" id="1_qw60k"]
+[ext_resource type="FontFile" uid="uid://bbm3i52hyofr3" path="res://Assets/fonts/LuckiestGuy-Regular.ttf" id="2_5yls4"]
+[ext_resource type="LabelSettings" uid="uid://c2m2p50ib308g" path="res://Resources/small_text.tres" id="3_p6jpk"]
+
+[sub_resource type="Animation" id="Animation_p6jpk"]
+resource_name = "Flash"
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../MC/PressSpaceLabel:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_2a143"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../MC/PressSpaceLabel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xlvfx"]
+_data = {
+&"Flash": SubResource("Animation_p6jpk"),
+&"RESET": SubResource("Animation_2a143")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_2a143"]
+font = ExtResource("2_5yls4")
+font_size = 96
+outline_size = 21
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_qw60k"]
+font = ExtResource("2_5yls4")
+font_size = 38
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 6
+shadow_color = Color(0, 0, 0, 1)
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_p6jpk")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Music")
+libraries = {
+&"": SubResource("AnimationLibrary_xlvfx")
+}
+autoplay = "Flash"
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_5yls4")
+autoplay = true
+parameters/looping = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_qw60k")
+expand_mode = 1
+
+[node name="MC" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="Label" type="Label" parent="MC"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "TAPPY
+PLANE"
+label_settings = SubResource("LabelSettings_2a143")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PressSpaceLabel" type="Label" parent="MC"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Press Space to Play!"
+label_settings = SubResource("LabelSettings_qw60k")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="MC"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+text = "High Score"
+label_settings = ExtResource("3_p6jpk")
+vertical_alignment = 1
+
+[node name="HighScoreLabel" type="Label" parent="MC"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+text = "000"
+label_settings = ExtResource("3_p6jpk")
+horizontal_alignment = 2
+vertical_alignment = 1
