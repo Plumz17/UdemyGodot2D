@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://cjw3vurm21npy"]
+[gd_scene load_steps=3 format=3 uid="uid://cjw3vurm21npy"]
 
+[ext_resource type="Script" uid="uid://4arqnlxj6kx4" path="res://Scenes/level_base.gd" id="1_fhsqj"]
 [ext_resource type="Texture2D" uid="uid://db6fhh1pn05ue" path="res://assets/scene/colored_castle.png" id="1_ikmr1"]
 
 [node name="LevelBase" type="Node2D"]
+script = ExtResource("1_fhsqj")
 
 [node name="ColoredCastle" type="Sprite2D" parent="."]
 position = Vector2(0, -120.92285)
@@ -10,3 +12,6 @@ scale = Vector2(1.1240234, 1.1240234)
 texture = ExtResource("1_ikmr1")
 centered = false
 offset = Vector2(0, -50)
+
+[node name="AnimalStart" type="Marker2D" parent="."]
+position = Vector2(215, 273)
