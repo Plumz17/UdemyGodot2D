@@ -1,11 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://k3ix1nlta8b"]
+[gd_scene load_steps=5 format=3 uid="uid://k3ix1nlta8b"]
 
 [ext_resource type="Script" uid="uid://cdvxhdnmutx78" path="res://Scenes/Pipes/pipes.gd" id="1_8mivx"]
 [ext_resource type="PackedScene" uid="uid://dh4d7d4evhw2v" path="res://Scenes/Laser/laser.tscn" id="1_tdr4r"]
 [ext_resource type="PackedScene" uid="uid://cdcaakicajtau" path="res://Scenes/Pipe/pipe.tscn" id="2_8mivx"]
+[ext_resource type="AudioStream" uid="uid://chyyvlefbnc5t" path="res://Assets/audio/score.wav" id="2_y36k3"]
 
 [node name="Pipes" type="Node2D"]
 script = ExtResource("1_8mivx")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_y36k3")
 
 [node name="Laser" parent="." instance=ExtResource("1_tdr4r")]
 collision_layer = 0

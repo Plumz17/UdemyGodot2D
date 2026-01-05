@@ -4,6 +4,8 @@ class_name Pipes
 
 var pipes_speed: float = 120.0
 @onready var laser: Area2D = $Laser
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -36,3 +38,4 @@ func _on_laser_body_exited(body: Node2D) -> void:
 	if body is Tappy:
 		disconnect_laser()
 		SignalHub.emit_on_point_scored()
+		audio_stream_player_2d.play()
