@@ -79,6 +79,7 @@ func calculate_impulse() -> Vector2:
 	return IMPULSE_MULT * -_dragged_vector
 
 func start_release() -> void:
+	SignalHub.emit_on_attempt_made()
 	arrow.hide()
 	launch_sound.play()
 	freeze = false

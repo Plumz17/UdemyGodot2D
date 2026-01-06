@@ -15,4 +15,5 @@ func die() -> void:
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	_num_cups -= 1
+	SignalHub.emit_on_cup_destroyed(_num_cups)
 	queue_free()

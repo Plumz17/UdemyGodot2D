@@ -1,0 +1,60 @@
+[gd_scene load_steps=6 format=3 uid="uid://dhr26r4xlccdj"]
+
+[ext_resource type="Texture2D" uid="uid://bsfp76lme6qes" path="res://assets/ui/panel_beige.png" id="1_hsxrf"]
+[ext_resource type="Script" uid="uid://dmkysma2v1g5k" path="res://Scenes/level_button.gd" id="2_j6rai"]
+[ext_resource type="FontFile" uid="uid://c25qirsrdifgc" path="res://assets/fonts/LuckiestGuy-Regular.ttf" id="2_j8cp3"]
+[ext_resource type="LabelSettings" uid="uid://bj2obxfejso0c" path="res://Resouces/game_ui.tres" id="3_j6rai"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_a7ics"]
+font = ExtResource("2_j8cp3")
+font_size = 48
+outline_size = 5
+outline_color = Color(0.11764706, 0.11764706, 0.11764706, 1)
+
+[node name="LevelButton" type="TextureButton"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(50, 50)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("1_hsxrf")
+script = ExtResource("2_j6rai")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="LevelLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "3"
+label_settings = SubResource("LabelSettings_a7ics")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "9999"
+label_settings = ExtResource("3_j6rai")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]
