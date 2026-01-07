@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://ci8ps0s7go5xr"]
+[gd_scene load_steps=7 format=3 uid="uid://ci8ps0s7go5xr"]
 
-[ext_resource type="Texture2D" uid="uid://ch11xb0rdwxue" path="res://Assets/frames/hidden_frame_blank.png" id="1_3dryh"]
 [ext_resource type="Script" uid="uid://cqh241ilyjuiv" path="res://Scenes/game.gd" id="1_wowpa"]
 [ext_resource type="LabelSettings" uid="uid://c7lymr7kvodca" path="res://Resources/game_label.tres" id="2_wowpa"]
 [ext_resource type="Texture2D" uid="uid://3vsnnduhh6fl" path="res://Assets/ui/blue_button00.png" id="3_i6g32"]
 [ext_resource type="Texture2D" uid="uid://cxly8njo8qkoy" path="res://Assets/ui/green_button00.png" id="4_1l0tm"]
+[ext_resource type="PackedScene" uid="uid://du11vj561vn85" path="res://Scenes/scorer.tscn" id="5_wowpa"]
+[ext_resource type="PackedScene" uid="uid://spep2ich2r5f" path="res://Scenes/game_over_ui.tscn" id="6_i6g32"]
 
 [node name="game" type="Control"]
 layout_mode = 3
@@ -23,47 +24,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="GridContainer" type="GridContainer" parent="HBoxContainer"]
+[node name="TileGrid" type="GridContainer" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
+theme_override_constants/h_separation = 4
+theme_override_constants/v_separation = 4
 columns = 6
-
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/GridContainer"]
-layout_mode = 2
-texture = ExtResource("1_3dryh")
-
-[node name="TextureRect2" type="TextureRect" parent="HBoxContainer/GridContainer"]
-layout_mode = 2
-texture = ExtResource("1_3dryh")
-
-[node name="TextureRect3" type="TextureRect" parent="HBoxContainer/GridContainer"]
-layout_mode = 2
-texture = ExtResource("1_3dryh")
-
-[node name="TextureRect4" type="TextureRect" parent="HBoxContainer/GridContainer"]
-layout_mode = 2
-texture = ExtResource("1_3dryh")
-
-[node name="TextureRect5" type="TextureRect" parent="HBoxContainer/GridContainer"]
-layout_mode = 2
-texture = ExtResource("1_3dryh")
-
-[node name="TextureRect6" type="TextureRect" parent="HBoxContainer/GridContainer"]
-layout_mode = 2
-texture = ExtResource("1_3dryh")
-
-[node name="TextureRect7" type="TextureRect" parent="HBoxContainer/GridContainer"]
-layout_mode = 2
-texture = ExtResource("1_3dryh")
-
-[node name="TextureRect8" type="TextureRect" parent="HBoxContainer/GridContainer"]
-layout_mode = 2
-texture = ExtResource("1_3dryh")
-
-[node name="TextureRect9" type="TextureRect" parent="HBoxContainer/GridContainer"]
-layout_mode = 2
-texture = ExtResource("1_3dryh")
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
 custom_minimum_size = Vector2(200, 0)
@@ -128,5 +95,13 @@ text = "EXIT"
 label_settings = ExtResource("2_wowpa")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Scorer" parent="." instance=ExtResource("5_wowpa")]
+
+[node name="Sound" type="AudioStreamPlayer" parent="."]
+
+[node name="GameOverUI" parent="." instance=ExtResource("6_i6g32")]
+visible = false
+layout_mode = 1
 
 [connection signal="pressed" from="HBoxContainer/MarginContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
