@@ -1,0 +1,132 @@
+[gd_scene load_steps=6 format=3 uid="uid://ci8ps0s7go5xr"]
+
+[ext_resource type="Texture2D" uid="uid://ch11xb0rdwxue" path="res://Assets/frames/hidden_frame_blank.png" id="1_3dryh"]
+[ext_resource type="Script" uid="uid://cqh241ilyjuiv" path="res://Scenes/game.gd" id="1_wowpa"]
+[ext_resource type="LabelSettings" uid="uid://c7lymr7kvodca" path="res://Resources/game_label.tres" id="2_wowpa"]
+[ext_resource type="Texture2D" uid="uid://3vsnnduhh6fl" path="res://Assets/ui/blue_button00.png" id="3_i6g32"]
+[ext_resource type="Texture2D" uid="uid://cxly8njo8qkoy" path="res://Assets/ui/green_button00.png" id="4_1l0tm"]
+
+[node name="game" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wowpa")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+columns = 6
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/GridContainer"]
+layout_mode = 2
+texture = ExtResource("1_3dryh")
+
+[node name="TextureRect2" type="TextureRect" parent="HBoxContainer/GridContainer"]
+layout_mode = 2
+texture = ExtResource("1_3dryh")
+
+[node name="TextureRect3" type="TextureRect" parent="HBoxContainer/GridContainer"]
+layout_mode = 2
+texture = ExtResource("1_3dryh")
+
+[node name="TextureRect4" type="TextureRect" parent="HBoxContainer/GridContainer"]
+layout_mode = 2
+texture = ExtResource("1_3dryh")
+
+[node name="TextureRect5" type="TextureRect" parent="HBoxContainer/GridContainer"]
+layout_mode = 2
+texture = ExtResource("1_3dryh")
+
+[node name="TextureRect6" type="TextureRect" parent="HBoxContainer/GridContainer"]
+layout_mode = 2
+texture = ExtResource("1_3dryh")
+
+[node name="TextureRect7" type="TextureRect" parent="HBoxContainer/GridContainer"]
+layout_mode = 2
+texture = ExtResource("1_3dryh")
+
+[node name="TextureRect8" type="TextureRect" parent="HBoxContainer/GridContainer"]
+layout_mode = 2
+texture = ExtResource("1_3dryh")
+
+[node name="TextureRect9" type="TextureRect" parent="HBoxContainer/GridContainer"]
+layout_mode = 2
+texture = ExtResource("1_3dryh")
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_right = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "Moves"
+label_settings = ExtResource("2_wowpa")
+
+[node name="MoveLabel" type="Label" parent="HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "00"
+label_settings = ExtResource("2_wowpa")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "Pairs"
+label_settings = ExtResource("2_wowpa")
+
+[node name="PairsLabel" type="Label" parent="HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "10/10"
+label_settings = ExtResource("2_wowpa")
+
+[node name="Space" type="Control" parent="HBoxContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="ExitButton" type="TextureButton" parent="HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("3_i6g32")
+texture_pressed = ExtResource("4_1l0tm")
+
+[node name="PairsLabel" type="Label" parent="HBoxContainer/MarginContainer/VBoxContainer/ExitButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 8
+text = "EXIT"
+label_settings = ExtResource("2_wowpa")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="HBoxContainer/MarginContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]

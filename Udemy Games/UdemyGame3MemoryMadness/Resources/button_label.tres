@@ -1,0 +1,11 @@
+[gd_resource type="LabelSettings" load_steps=3 format=3 uid="uid://d0y2rfwk8mlwm"]
+
+[ext_resource type="FontFile" uid="uid://6jkuep4w4emn" path="res://Assets/fonts/LuckiestGuy-Regular.ttf" id="1_1dyji"]
+
+[sub_resource type="FontVariation" id="FontVariation_1dyji"]
+base_font = ExtResource("1_1dyji")
+spacing_bottom = -10
+
+[resource]
+font = SubResource("FontVariation_1dyji")
+font_size = 48

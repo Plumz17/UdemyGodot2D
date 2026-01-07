@@ -1,11 +1,10 @@
 extends Node
 
+signal on_level_selected(level_number: int)
+signal on_exit_button_pressed
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func emit_on_level_selected(level_number: int) -> void:
+	on_level_selected.emit(level_number)
+	
+func emit_on_exit_button_pressed() -> void:
+	on_exit_button_pressed.emit()
