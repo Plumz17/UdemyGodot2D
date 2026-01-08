@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="UdemyGame4FoxyAntics"
+run/main_scene="uid://davqgorvo0ait"
 config/features=PackedStringArray("4.5", "Mobile")
 config/icon="uid://c7ioov3vo25yf"
 
@@ -55,6 +56,11 @@ reload={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Platforms"
+
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="mobile"
