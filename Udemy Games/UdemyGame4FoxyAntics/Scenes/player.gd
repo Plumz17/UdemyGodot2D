@@ -6,6 +6,7 @@ class_name Player
 @export var run_speed: float = 150 
 @export var terminal_velocity: float = 350
 @export var fallen_off_y: float = 800
+@onready var shooter: Shooter = $Shooter
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var label: Label = $Label
@@ -16,6 +17,11 @@ func _ready() -> void:
 
 func _enter_tree() -> void:
 	add_to_group(Constants.PLAYER_GROUP)
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("shoot"):
+		var dir: Vector2 = Vector2.LEFT if sprite_2d.flip_h else Vector2.RIGHT
+		shooter.shoot(dir)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
@@ -29,6 +35,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	update_debug_label()
 	fallen_off()
+
 
 func update_debug_label() -> void:
 	var ds: String = ""

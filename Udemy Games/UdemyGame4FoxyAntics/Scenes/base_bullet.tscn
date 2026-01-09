@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://d2x4s1ie5ilij"]
+
+[ext_resource type="Script" uid="uid://bi33h5ubvrh3h" path="res://base_bullet.gd" id="1_gq5uc"]
+[ext_resource type="PackedScene" uid="uid://c5ocguo17yurv" path="res://Scenes/life_timer.tscn" id="2_u2vge"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ma888"]
+radius = 4.0
+
+[node name="BaseBullet" type="Area2D"]
+script = ExtResource("1_gq5uc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ma888")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+
+[node name="LifeTimer" parent="." instance=ExtResource("2_u2vge")]
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

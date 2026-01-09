@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://uqk3neig2rff"]
+
+[ext_resource type="PackedScene" uid="uid://d2x4s1ie5ilij" path="res://Scenes/base_bullet.tscn" id="1_tcvu8"]
+[ext_resource type="Texture2D" uid="uid://bml0hvrmd8y67" path="res://Assets/items/bullet2.png" id="2_54jiv"]
+
+[node name="EnemyBullet" instance=ExtResource("1_tcvu8")]
+
+[node name="Sprite2D" parent="." index="1"]
+texture = ExtResource("2_54jiv")

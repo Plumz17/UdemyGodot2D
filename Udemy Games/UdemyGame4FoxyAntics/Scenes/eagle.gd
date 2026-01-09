@@ -5,6 +5,7 @@ var fly_direction: Vector2 = Vector2.ZERO
 
 @onready var direction_timer: Timer = $DirectionTimer
 @onready var player_detector: RayCast2D = $PlayerDetector
+@onready var shooter: Shooter = $Shooter
 
 
 func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
@@ -29,7 +30,8 @@ func _physics_process(delta: float) -> void:
 
 func shoot() -> void:
 	if player_detector.is_colliding():
-		print("Shoot!")
+		var dir: Vector2 = global_position.direction_to(_player_ref.global_position)
+		shooter.shoot(dir)
 
 func _on_direction_timer_timeout() -> void:
 	fly_to_player()

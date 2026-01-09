@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=4 uid="uid://davqgorvo0ait"]
+[gd_scene load_steps=9 format=4 uid="uid://davqgorvo0ait"]
 
+[ext_resource type="Script" uid="uid://c16jyatvumx1k" path="res://Scenes/level_base.gd" id="1_e3kpl"]
 [ext_resource type="Texture2D" uid="uid://ddsmxqpxdyls2" path="res://Assets/tiles/Terrain (16x16).png" id="1_ikmr1"]
 [ext_resource type="PackedScene" uid="uid://c2r6fbrrond8q" path="res://Scenes/player.tscn" id="2_fhsqj"]
 [ext_resource type="PackedScene" uid="uid://bjhiq8413gnav" path="res://Scenes/snail.tscn" id="3_38dla"]
@@ -257,6 +258,7 @@ terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 sources/0 = SubResource("TileSetAtlasSource_fhsqj")
 
 [node name="LevelBase" type="Node2D"]
+script = ExtResource("1_e3kpl")
 
 [node name="Platforms" type="TileMapLayer" parent="."]
 position = Vector2(0, -688)
@@ -274,6 +276,3 @@ position = Vector2(385, -102)
 
 [node name="Eagle" parent="." instance=ExtResource("5_3ne40")]
 position = Vector2(389, -242)
-fly_speed = Vector2(70, 30)
-points = 1
-speed = 30.0
