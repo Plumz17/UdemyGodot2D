@@ -273,4 +273,7 @@ position = Vector2(142, -76)
 position = Vector2(385, -102)
 
 [node name="Eagle" parent="." instance=ExtResource("5_3ne40")]
-position = Vector2(351, -281)
+position = Vector2(389, -242)
+fly_speed = Vector2(70, 30)
+points = 1
+speed = 30.0
