@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bkf4lt2fuhdhl"]
+[gd_scene load_steps=3 format=3 uid="uid://bkf4lt2fuhdhl"]
 
 [ext_resource type="Script" uid="uid://csbaoo14livo5" path="res://shooter.gd" id="1_tkdqg"]
+[ext_resource type="AudioStream" uid="uid://c4rim26vxak33" path="res://Assets/sound/laser.wav" id="2_q6hcp"]
 
 [node name="Shooter" type="Node2D"]
 script = ExtResource("1_tkdqg")
@@ -9,5 +10,6 @@ script = ExtResource("1_tkdqg")
 one_shot = true
 
 [node name="Sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_q6hcp")
 
 [connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]

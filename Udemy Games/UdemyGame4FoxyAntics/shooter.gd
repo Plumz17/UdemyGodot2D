@@ -10,15 +10,15 @@ var _can_shoot: bool = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
-
+	shoot_timer.wait_time = shoot_delay
 
 func shoot(direction: Vector2) -> void:
 	if !_can_shoot:
 		return
-	print("SHOOT: ", direction)
+	SignalHub._emit_on_create_bullet(global_position, direction, speed, bullet_key)
 	_can_shoot = false
 	shoot_timer.start()
+	sound.play()
 
 
 func _on_shoot_timer_timeout() -> void:

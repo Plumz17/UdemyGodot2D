@@ -18,6 +18,8 @@ func _ready() -> void:
 		queue_free()
 
 func die() -> void:
+	SignalHub._emit_on_create_object(global_position, Constants.ObjectType.PICKUP)
+	SignalHub._emit_on_create_object(global_position, Constants.ObjectType.EXPLOSION)
 	set_physics_process(false)
 	queue_free()
 

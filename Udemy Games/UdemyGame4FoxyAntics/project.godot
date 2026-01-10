@@ -15,6 +15,10 @@ run/main_scene="uid://davqgorvo0ait"
 config/features=PackedStringArray("4.5", "Mobile")
 config/icon="uid://c7ioov3vo25yf"
 
+[autoload]
+
+SignalHub="*res://Globals/SignalHub.gd"
+
 [display]
 
 window/size/viewport_width=1024
@@ -60,6 +64,9 @@ reload={
 
 2d_physics/layer_1="Platforms"
 2d_physics/layer_2="Player Hitbox"
+2d_physics/layer_3="Player Bullet"
+2d_physics/layer_4="Enemy Hitbox"
+2d_physics/layer_5="Enemy Bullet"
 
 [rendering]
 

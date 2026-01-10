@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://davqgorvo0ait"]
+[gd_scene load_steps=10 format=4 uid="uid://davqgorvo0ait"]
 
 [ext_resource type="Script" uid="uid://c16jyatvumx1k" path="res://Scenes/level_base.gd" id="1_e3kpl"]
 [ext_resource type="Texture2D" uid="uid://ddsmxqpxdyls2" path="res://Assets/tiles/Terrain (16x16).png" id="1_ikmr1"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://dcac1kvpb1ra4" path="res://Scenes/frog.tscn" id="4_n5e7m"]
 [ext_resource type="PackedScene" uid="uid://diquecnwvy2st" path="res://Scenes/eagle.tscn" id="5_3ne40"]
 [ext_resource type="PackedScene" uid="uid://brv3ylkh1blck" path="res://Scenes/object_maker.tscn" id="7_2ssho"]
-[ext_resource type="AudioStream" uid="uid://71wqlktf30tn" path="res://Assets/sound/Flowing Rocks.ogg" id="8_a8nbr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fhsqj"]
 resource_name = "Platforms"
@@ -280,8 +279,3 @@ position = Vector2(385, -102)
 position = Vector2(389, -242)
 
 [node name="ObjectMaker" parent="." instance=ExtResource("7_2ssho")]
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("8_a8nbr")
-autoplay = true
-parameters/looping = true
