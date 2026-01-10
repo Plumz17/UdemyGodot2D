@@ -20,6 +20,7 @@ func _ready() -> void:
 func die() -> void:
 	SignalHub._emit_on_create_object(global_position, Constants.ObjectType.PICKUP)
 	SignalHub._emit_on_create_object(global_position, Constants.ObjectType.EXPLOSION)
+	SignalHub._emit_on_scored(points)
 	set_physics_process(false)
 	queue_free()
 

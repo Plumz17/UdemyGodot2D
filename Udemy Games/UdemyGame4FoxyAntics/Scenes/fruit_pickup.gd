@@ -22,6 +22,7 @@ func _on_area_entered(area: Area2D) -> void:
 	hide()
 	set_deferred("monitoring", false)
 	audio_stream_player_2d.play()
+	SignalHub._emit_on_scored(_points)
 
 func _on_audio_stream_player_2d_finished() -> void:
 	queue_free()

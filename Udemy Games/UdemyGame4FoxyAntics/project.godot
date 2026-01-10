@@ -11,13 +11,14 @@ config_version=5
 [application]
 
 config/name="UdemyGame4FoxyAntics"
-run/main_scene="uid://davqgorvo0ait"
+run/main_scene="uid://lpy424ie2nbl"
 config/features=PackedStringArray("4.5", "Mobile")
 config/icon="uid://c7ioov3vo25yf"
 
 [autoload]
 
 SignalHub="*res://Globals/SignalHub.gd"
+GameManager="*res://Globals/GameManager.gd"
 
 [display]
 
@@ -57,6 +58,11 @@ next={
 reload={
 "deadzone": 0.2,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":82,"key_label":0,"unicode":114,"location":0,"echo":false,"script":null)
+]
+}
+esc={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194305,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
 ]
 }
 
