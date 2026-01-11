@@ -1,7 +1,8 @@
-[gd_scene load_steps=21 format=3 uid="uid://cfhnnlg67n4dg"]
+[gd_scene load_steps=24 format=3 uid="uid://cfhnnlg67n4dg"]
 
 [ext_resource type="Texture2D" uid="uid://crs2gas5qck0x" path="res://Assets/enemies/boss/boss.png" id="1_0154r"]
 [ext_resource type="Script" uid="uid://drlm1hs4b8nap" path="res://Scenes/boss.gd" id="1_wwfse"]
+[ext_resource type="PackedScene" uid="uid://bkf4lt2fuhdhl" path="res://Scenes/shooter.tscn" id="3_cxrok"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0154r"]
 radius = 26.0
@@ -94,7 +95,21 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5, 1.5, 2),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(-200, 0), Vector2(0, -150), Vector2(0, 0)]
+"values": [Vector2(0, 0), Vector2(-150, 0), Vector2(0, -150), Vector2(0, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"shoot"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_n725y"]
@@ -108,10 +123,24 @@ tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.099999994, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.90000004, 1, 1.1, 1.2, 1.3000001, 1.4, 1.5, 1.6, 1.7, 1.8000001, 1.9, 2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.099999994, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.90000004, 1, 1.1, 1.2, 1.3000001, 1.4, 1.5, 1.6, 1.7, 1.8000001, 1.9, 1.9001, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [false],
+"method": &"set_invincible"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_wwfse"]
@@ -149,6 +178,9 @@ animation = &"arrive"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_n725y"]
 animation = &"attack"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qtle2"]
+animation = &"hit"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mh6p8"]
 animation = &"pulse"
 
@@ -172,21 +204,32 @@ advance_mode = 2
 switch_mode = 2
 advance_mode = 2
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lel8w"]
+switch_mode = 2
+advance_mode = 2
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_lel8w"]
+states/End/position = Vector2(867, 95)
 states/RESET/node = SubResource("AnimationNodeAnimation_cxrok")
 states/RESET/position = Vector2(387, 100)
 states/arrive/node = SubResource("AnimationNodeAnimation_ukjjc")
 states/arrive/position = Vector2(520, 73)
 states/attack/node = SubResource("AnimationNodeAnimation_n725y")
 states/attack/position = Vector2(678, 156)
+states/hit/node = SubResource("AnimationNodeAnimation_qtle2")
+states/hit/position = Vector2(791, 50)
 states/pulse/node = SubResource("AnimationNodeAnimation_mh6p8")
 states/pulse/position = Vector2(658, 58)
-transitions = ["Start", "RESET", SubResource("AnimationNodeStateMachineTransition_qtle2"), "RESET", "arrive", SubResource("AnimationNodeStateMachineTransition_yq25j"), "arrive", "pulse", SubResource("AnimationNodeStateMachineTransition_odcco"), "pulse", "attack", SubResource("AnimationNodeStateMachineTransition_q76ad"), "attack", "pulse", SubResource("AnimationNodeStateMachineTransition_nuv35")]
+transitions = ["Start", "RESET", SubResource("AnimationNodeStateMachineTransition_qtle2"), "RESET", "arrive", SubResource("AnimationNodeStateMachineTransition_yq25j"), "arrive", "pulse", SubResource("AnimationNodeStateMachineTransition_odcco"), "pulse", "attack", SubResource("AnimationNodeStateMachineTransition_q76ad"), "attack", "pulse", SubResource("AnimationNodeStateMachineTransition_nuv35"), "hit", "pulse", SubResource("AnimationNodeStateMachineTransition_lel8w")]
 
 [node name="Boss" type="Node2D"]
 script = ExtResource("1_wwfse")
 
 [node name="Visuals" type="Node2D" parent="."]
+
+[node name="Shooter" parent="Visuals" instance=ExtResource("3_cxrok")]
+speed = 200.0
+bullet_key = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="Visuals"]
 position = Vector2(0, -32)
@@ -222,4 +265,5 @@ tree_root = SubResource("AnimationNodeStateMachine_lel8w")
 anim_player = NodePath("../AnimationPlayer")
 parameters/conditions/on_trigger = false
 
+[connection signal="area_entered" from="Visuals/Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="area_entered" from="Trigger" to="." method="_on_trigger_area_entered"]
