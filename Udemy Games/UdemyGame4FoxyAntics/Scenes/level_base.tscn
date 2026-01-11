@@ -1,14 +1,14 @@
-[gd_scene load_steps=12 format=4 uid="uid://davqgorvo0ait"]
+[gd_scene load_steps=13 format=4 uid="uid://davqgorvo0ait"]
 
 [ext_resource type="Script" uid="uid://c16jyatvumx1k" path="res://Scenes/level_base.gd" id="1_e3kpl"]
 [ext_resource type="Texture2D" uid="uid://ddsmxqpxdyls2" path="res://Assets/tiles/Terrain (16x16).png" id="1_ikmr1"]
 [ext_resource type="PackedScene" uid="uid://c2r6fbrrond8q" path="res://Scenes/player.tscn" id="2_fhsqj"]
-[ext_resource type="PackedScene" uid="uid://bjhiq8413gnav" path="res://Scenes/snail.tscn" id="3_38dla"]
-[ext_resource type="PackedScene" uid="uid://dcac1kvpb1ra4" path="res://Scenes/frog.tscn" id="4_n5e7m"]
-[ext_resource type="PackedScene" uid="uid://diquecnwvy2st" path="res://Scenes/eagle.tscn" id="5_3ne40"]
 [ext_resource type="PackedScene" uid="uid://brv3ylkh1blck" path="res://Scenes/object_maker.tscn" id="7_2ssho"]
+[ext_resource type="PackedScene" uid="uid://bb0yakly1rg6x" path="res://Scenes/moving_platform_pf.tscn" id="7_a8nbr"]
 [ext_resource type="AudioStream" uid="uid://71wqlktf30tn" path="res://Assets/sound/Flowing Rocks.ogg" id="8_a8nbr"]
+[ext_resource type="PackedScene" uid="uid://d0cy7xi31kp7p" path="res://Scenes/moving_plaform.tscn" id="8_lnrhr"]
 [ext_resource type="PackedScene" uid="uid://bon2x0dd78db" path="res://Scenes/hud.tscn" id="9_lnrhr"]
+[ext_resource type="PackedScene" uid="uid://c3a2id8v6ts4p" path="res://Scenes/floor_spikes.tscn" id="9_qn2pf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fhsqj"]
 resource_name = "Platforms"
@@ -20,10 +20,13 @@ texture = ExtResource("1_ikmr1")
 4:0/0 = 0
 6:0/0 = 0
 6:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+6:0/0/physics_layer_0/polygon_0/one_way = true
 7:0/0 = 0
 7:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+7:0/0/physics_layer_0/polygon_0/one_way = true
 8:0/0 = 0
 8:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+8:0/0/physics_layer_0/polygon_0/one_way = true
 9:0/0 = 0
 9:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 10:0/0 = 0
@@ -260,6 +263,12 @@ terrain_set_0/terrain_0/name = "Pink Grass"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 sources/0 = SubResource("TileSetAtlasSource_fhsqj")
 
+[sub_resource type="Curve2D" id="Curve2D_e3kpl"]
+_data = {
+"points": PackedVector2Array(16.677809, 16.677809, -16.677809, -16.677809, 99, -165, -9.3526535, -34.712734, 9.3526535, 34.712734, 309, -165, 12.485887, -27.905771, -12.485887, 27.905771, 309, -110, 8.453361, 17.446297, -8.453361, -17.446297, 98, -111, 0, 0, 0, 0, 99, -165)
+}
+point_count = 5
+
 [node name="LevelBase" type="Node2D"]
 script = ExtResource("1_e3kpl")
 
@@ -271,15 +280,6 @@ tile_set = SubResource("TileSet_38dla")
 [node name="Player" parent="." instance=ExtResource("2_fhsqj")]
 position = Vector2(218, -85)
 
-[node name="Snail" parent="." instance=ExtResource("3_38dla")]
-position = Vector2(142, -76)
-
-[node name="Frog" parent="." instance=ExtResource("4_n5e7m")]
-position = Vector2(385, -102)
-
-[node name="Eagle" parent="." instance=ExtResource("5_3ne40")]
-position = Vector2(389, -242)
-
 [node name="ObjectMaker" parent="." instance=ExtResource("7_2ssho")]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
@@ -290,3 +290,27 @@ parameters/looping = true
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="HUD" parent="CanvasLayer" instance=ExtResource("9_lnrhr")]
+
+[node name="MovingPlatforms" type="Node" parent="."]
+
+[node name="Path2D" type="Path2D" parent="MovingPlatforms"]
+curve = SubResource("Curve2D_e3kpl")
+
+[node name="MovingPlatformPf" parent="MovingPlatforms/Path2D" instance=ExtResource("7_a8nbr")]
+position = Vector2(212.46277, -184.78151)
+scale = Vector2(0.99999994, 0.99999994)
+progress = 119.48578
+
+[node name="MP1" type="Node" parent="MovingPlatforms"]
+
+[node name="MovingPlaform" parent="MovingPlatforms/MP1" node_paths=PackedStringArray("targets") instance=ExtResource("8_lnrhr")]
+targets = [NodePath("../Marker2D2"), NodePath("../Marker2D")]
+
+[node name="Marker2D" type="Marker2D" parent="MovingPlatforms/MP1"]
+position = Vector2(671, -6)
+
+[node name="Marker2D2" type="Marker2D" parent="MovingPlatforms/MP1"]
+position = Vector2(671, -120)
+
+[node name="FloorSpikes" parent="." instance=ExtResource("9_qn2pf")]
+position = Vector2(28, -16)

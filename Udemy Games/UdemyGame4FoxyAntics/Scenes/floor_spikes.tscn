@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://c3a2id8v6ts4p"]
+
+[ext_resource type="Texture2D" uid="uid://bvvdcbrhvgtdr" path="res://Assets/danger/floor_spikes.png" id="1_v1qb1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v1qb1"]
+size = Vector2(16, 6)
+
+[node name="FloorSpikes" type="Area2D"]
+collision_layer = 8
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_v1qb1")
+offset = Vector2(0, 2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_v1qb1")
