@@ -13,7 +13,6 @@ script = ExtResource("1_gq5uc")
 shape = SubResource("CircleShape2D_ma888")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-z_index = -1
 scale = Vector2(0.5, 0.5)
 
 [node name="LifeTimer" parent="." instance=ExtResource("2_u2vge")]

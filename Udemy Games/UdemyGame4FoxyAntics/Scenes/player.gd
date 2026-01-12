@@ -9,9 +9,12 @@ const DAMAGE = preload("uid://udiikexqyklc")
 @export var jump_force: float = -270
 @export var run_speed: float = 150 
 @export var terminal_velocity: float = 350
-@export var fallen_off_y: float = 800
+@export var fallen_off_y: float = 200
 @export var hurt_jump_velocity: Vector2 = Vector2(0.0, -130)
+@export var camera_min: Vector2 = Vector2(-1000, 1000)
+@export var camera_max: Vector2 = Vector2(1000, -1000)
 
+@onready var camera: Camera2D = $Camera
 @onready var hurt_timer: Timer = $HurtTimer
 @onready var shooter: Shooter = $Shooter
 @onready var sprite_2d: Sprite2D = $Sprite2D
@@ -19,10 +22,21 @@ const DAMAGE = preload("uid://udiikexqyklc")
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 var _is_hurt: bool = false
 var _is_invincible: bool = false
+var _lives: int = 3
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	setup_camera()
+	call_deferred("late_init")
+
+func setup_camera() -> void:
+	camera.limit_bottom = camera_min.y
+	camera.limit_left = camera_min.x
+	camera.limit_top = camera_max.y
+	camera.limit_right = camera_max.x
+
+func late_init() -> void:
+	SignalHub._emit_on_player_hit(_lives, false)
 
 func _enter_tree() -> void:
 	add_to_group(Constants.PLAYER_GROUP)
@@ -58,17 +72,28 @@ func get_input() -> void:
 
 func update_debug_label() -> void:
 	var ds: String = ""
-	ds += "Floor:%s\n" % is_on_floor()
+	ds += "FL:%s,LV:%s\n" % [is_on_floor(), _lives]
 	ds += "V:%.1f,%.1f\n" % [velocity.x, velocity.y]
 	ds += "P:%.1f,%.1f" % [global_position.x, global_position.y]
 	label.text = ds
 
 func fallen_off() -> void:
 	if global_position.y > fallen_off_y:
-		queue_free()
+		reduce_lives(_lives)
+
+func reduce_lives(reduction: int) -> bool:
+	_lives -= reduction
+	SignalHub._emit_on_player_hit(_lives, true)
+	if _lives <= 0:
+		print("DEAD")
+		set_physics_process(false)
+		return false
+	return true
 
 func apply_hit() -> void:
 	if _is_invincible:
+		return
+	if reduce_lives(1) == false:
 		return
 	
 	go_invincible()

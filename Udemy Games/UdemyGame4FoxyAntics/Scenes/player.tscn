@@ -218,6 +218,8 @@ height = 20.0
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 0
 script = ExtResource("1_cvnsp")
+camera_min = Vector2(-10, 0)
+camera_max = Vector2(700, -400)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_v0iea")

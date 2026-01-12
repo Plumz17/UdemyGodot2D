@@ -3,12 +3,13 @@ extends Node
 
 const MAIN = preload("uid://lpy424ie2nbl")
 const LEVEL_BASE = preload("uid://davqgorvo0ait")
-
+const LEVELS: Array[PackedScene] = [preload("uid://dhjhfi1a242nh"), preload("uid://bhtisn3oe0o5q")]
 
 const SCORES_PATH = "user://high_scores.tres"
 
 
 var high_scores: HighScores = HighScores.new()
+var current_level: int = -1
 
 # score to carry over between levels
 var cached_score: int:
@@ -32,12 +33,15 @@ func _exit_tree():
 
 
 func load_main():
+	current_level = -1
 	cached_score = 0
 	get_tree().change_scene_to_packed(MAIN)
 
 
 func load_next_level():
-	get_tree().change_scene_to_packed(LEVEL_BASE)
+	current_level += 1
+	if current_level >= LEVELS.size(): current_level = 0
+	get_tree().change_scene_to_packed(LEVELS[current_level])
 
 
 func load_high_scores():		

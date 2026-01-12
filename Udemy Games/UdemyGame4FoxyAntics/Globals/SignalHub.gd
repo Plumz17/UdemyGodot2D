@@ -10,6 +10,15 @@ signal on_create_object(
 
 signal on_scored(points: int)
 
+signal on_boss_killed
+
+signal on_player_hit(lives: int, shake: bool)
+
+signal on_level_complete(complete:bool)
+
+func _emit_on_player_hit(lives: int, shake: bool) -> void:
+	on_player_hit.emit(lives, shake)
+
 func _emit_on_create_bullet(pos:Vector2, dir:Vector2, speed: float, ob_type: Constants.ObjectType) -> void:
 	on_create_bullet.emit(pos, dir, speed, ob_type)
 
@@ -18,3 +27,9 @@ func _emit_on_create_object(pos:Vector2, ob_type: Constants.ObjectType) -> void:
 
 func _emit_on_scored(points: int) -> void:
 	on_scored.emit(points)
+	
+func _emit_on_boss_killed() -> void:
+	on_boss_killed.emit()
+
+func _emit_on_level_complete(complete: bool) -> void:
+	on_level_complete.emit(complete)
