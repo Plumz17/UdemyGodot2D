@@ -1,0 +1,31 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="UdemyGame5Sokoban"
+config/features=PackedStringArray("4.5", "Mobile")
+config/icon="uid://b5md8j0gn3tuf"
+
+[autoload]
+
+GameManager="*res://Globals/GameManager.gd"
+LevelData="*res://Globals/LevelData.gd"
+
+[display]
+
+window/size/viewport_width=1024
+window/size/viewport_height=768
+window/stretch/mode="viewport"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
+renderer/rendering_method="mobile"
