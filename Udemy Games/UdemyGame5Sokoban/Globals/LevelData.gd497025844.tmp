@@ -1,0 +1,21 @@
+extends Node
+
+const LEVEL_DATA_PATH: String = "res://Globals/LevelData.gd"
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	load_level_data()
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+	
+func load_level_data() -> void:
+	var file: FileAccess = FileAccess.open(LEVEL_DATA_PATH, FileAccess.READ)
+	if file == null:
+		print("Test")
+		return
+	var data_dict: Dictionary = JSON.parse_string(file.get_as_text())
+	pass
+	

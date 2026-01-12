@@ -1,4 +1,8 @@
-[gd_scene format=3 uid="uid://cby0c8kk2t6dn"]
+[gd_scene load_steps=4 format=3 uid="uid://cby0c8kk2t6dn"]
+
+[ext_resource type="Script" uid="uid://bkyk33tqvlrra" path="res://Scenes/main.gd" id="1_8gbba"]
+[ext_resource type="Texture2D" uid="uid://cl3ag8bgil0jq" path="res://Assets/Gray.png" id="1_jjgbg"]
+[ext_resource type="LabelSettings" uid="uid://iubd5adyqn7n" path="res://Assets/LG_Title_96.tres" id="2_bo1nx"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -7,3 +11,42 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_8gbba")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_jjgbg")
+stretch_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "SOKOBAN!"
+label_settings = ExtResource("2_bo1nx")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+columns = 6

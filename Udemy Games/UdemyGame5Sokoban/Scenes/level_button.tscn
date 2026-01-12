@@ -1,0 +1,58 @@
+[gd_scene load_steps=6 format=3 uid="uid://gv3cwn4j3skd"]
+
+[ext_resource type="Texture2D" uid="uid://c3cyqc3e8etrc" path="res://Assets/blue_panel.png" id="1_iapje"]
+[ext_resource type="FontFile" uid="uid://c6mvmiviyc3ew" path="res://Assets/gemunu-libre-v8-latin-700.ttf" id="2_34smg"]
+[ext_resource type="Script" uid="uid://dhory8qp8hh71" path="res://Scenes/level_button.gd" id="2_j8cp3"]
+[ext_resource type="Texture2D" uid="uid://dfch1q0xjtbqe" path="res://Assets/green_checkmark.png" id="3_hsxrf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_hsxrf"]
+font = ExtResource("2_34smg")
+font_size = 36
+
+[node name="LevelButton" type="NinePatchRect"]
+custom_minimum_size = Vector2(64, 64)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -960.0
+offset_bottom = -704.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 0
+texture = ExtResource("1_iapje")
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+script = ExtResource("2_j8cp3")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "10"
+label_settings = SubResource("LabelSettings_hsxrf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CheckMark" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 23.0
+offset_bottom = 22.0
+texture = ExtResource("3_hsxrf")
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
