@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=4 uid="uid://btnyp2mdj6oyp"]
+[gd_scene load_steps=8 format=4 uid="uid://btnyp2mdj6oyp"]
 
 [ext_resource type="Script" uid="uid://bfak4trgjof0d" path="res://Scenes/level.gd" id="1_k5f4k"]
 [ext_resource type="Texture2D" uid="uid://40amuf2uwq6n" path="res://Assets/Purple.png" id="1_tumq0"]
 [ext_resource type="Texture2D" uid="uid://ce441w84bsvap" path="res://Assets/spritesheet.png" id="3_6phgx"]
 [ext_resource type="PackedScene" uid="uid://dyq7qsglxq8ov" path="res://Scenes/player.tscn" id="4_81xng"]
+[ext_resource type="PackedScene" uid="uid://b43idpp5snbdm" path="res://Scenes/game_ui.tscn" id="5_wqkje"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_81xng"]
 texture = ExtResource("3_6phgx")
@@ -62,3 +63,7 @@ tile_set = SubResource("TileSet_wqkje")
 zoom = Vector2(1.5, 1.5)
 
 [node name="player" parent="." instance=ExtResource("4_81xng")]
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="GameUI" parent="CanvasLayer2" instance=ExtResource("5_wqkje")]
