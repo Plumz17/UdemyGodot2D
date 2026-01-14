@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://w1o8gxfxs0la"]
+
+[ext_resource type="Texture2D" uid="uid://cr11dcg5odiqs" path="res://assets/ui/blue_button00.png" id="1_w6d7u"]
+[ext_resource type="LabelSettings" uid="uid://bu8jorqc2s8px" path="res://Resources/button_label.tres" id="2_a4d86"]
+[ext_resource type="Script" uid="uid://okmf63djl0lo" path="res://Scenes/UIButton/ui_button.gd" id="2_vwoh7"]
+
+[node name="UIButton" type="TextureButton"]
+offset_right = 190.0
+offset_bottom = 49.0
+texture_normal = ExtResource("1_w6d7u")
+script = ExtResource("2_vwoh7")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.5
+offset_top = -11.5
+offset_right = 20.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Set Me"
+label_settings = ExtResource("2_a4d86")
+horizontal_alignment = 1
+vertical_alignment = 1
