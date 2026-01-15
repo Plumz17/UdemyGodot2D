@@ -28,6 +28,7 @@ script = ExtResource("1_wmxvo")
 [node name="Booms" type="Node2D" parent="."]
 
 [node name="OutOfTime" parent="." instance=ExtResource("2_wmxvo")]
+life_s = 30.0
 
 [node name="Sound" type="AudioStreamPlayer2D" parent="."]
 
