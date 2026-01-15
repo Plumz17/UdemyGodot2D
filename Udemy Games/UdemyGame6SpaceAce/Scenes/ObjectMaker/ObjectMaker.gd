@@ -7,12 +7,16 @@ const POWER_UP = preload("uid://cy1od60rxjixj")
 const BULLET_BOMB = preload("uid://bm0nnuweflsla")
 const BULLET_ENEMY = preload("uid://b5gd4lfl76hsm")
 const BULLET_PLAYER = preload("uid://mcy2jyiy251x")
+const HOMING_MISSLE = preload("uid://dwnc0pbth8ews")
+
 
 func _enter_tree() -> void:
 	SignalHub.on_create_explosion.connect(on_create_explosion)
 	SignalHub.on_create_powerup.connect(on_create_powerup)
 	SignalHub.on_create_powerup_random.connect(on_create_powerup_random)
 	SignalHub.on_create_bullet.connect(on_create_bullet)
+	SignalHub.on_create_homing_missile.connect(on_create_homing_missile)
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -52,3 +56,8 @@ func on_create_bullet(pos: Vector2, direction: Vector2, speed: float, bullet_typ
 		var nb: BulletBase = scene.instantiate()
 		nb.setup(direction, speed)
 		call_deferred(ADD_OBJECT, nb, pos)
+
+
+func on_create_homing_missile(start_pos: Vector2) -> void:
+	var hm: HomingMissle = HOMING_MISSLE.instantiate()
+	call_deferred(ADD_OBJECT, hm, start_pos)

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dxvftg7fo77bx"]
 
 [ext_resource type="PackedScene" uid="uid://d0wckwt4c1g2s" path="res://Scenes/Projectile/projectile.tscn" id="1_0n5i2"]
-[ext_resource type="Script" uid="uid://daubd021ksg4k" path="res://bullet_base.gd" id="2_58x03"]
+[ext_resource type="Script" uid="uid://daubd021ksg4k" path="res://Scenes/Projectile/bullet_base.gd" id="2_58x03"]
 
 [node name="BulletBase" instance=ExtResource("1_0n5i2")]
 script = ExtResource("2_58x03")

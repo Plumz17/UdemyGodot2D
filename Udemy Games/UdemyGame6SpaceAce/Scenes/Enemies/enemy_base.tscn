@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://c3f60cusvxi7"]
+
+[ext_resource type="PackedScene" uid="uid://xhrawgxgrybg" path="res://Scenes/HealthBar/health_bar.tscn" id="1_vu4yt"]
+[ext_resource type="Script" uid="uid://wxe7brynyrm2" path="res://Scenes/Enemies/enemy_base.gd" id="1_wmxvo"]
+[ext_resource type="PackedScene" uid="uid://qq0gjyel2fm6" path="res://Scenes/OutOfTime/OutOfTime.tscn" id="2_wmxvo"]
+
+[sub_resource type="GDScript" id="GDScript_b1gup"]
+script/source = "extends CollisionShape2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[node name="EnemyBase" type="PathFollow2D"]
+rotates = false
+loop = false
+script = ExtResource("1_wmxvo")
+
+[node name="HealthBar" parent="." instance=ExtResource("1_vu4yt")]
+
+[node name="Booms" type="Node2D" parent="."]
+
+[node name="OutOfTime" parent="." instance=ExtResource("2_wmxvo")]
+
+[node name="Sound" type="AudioStreamPlayer2D" parent="."]
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+script = SubResource("GDScript_b1gup")
+
+[connection signal="died" from="HealthBar" to="." method="_on_health_bar_died"]
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

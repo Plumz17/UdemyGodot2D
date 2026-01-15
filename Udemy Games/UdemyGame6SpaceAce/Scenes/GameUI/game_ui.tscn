@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=3 uid="uid://bnl3htl5rh5fj"]
+
+[ext_resource type="PackedScene" uid="uid://xhrawgxgrybg" path="res://Scenes/HealthBar/health_bar.tscn" id="1_mjubw"]
+[ext_resource type="Script" uid="uid://bao2q5goomytl" path="res://Scenes/GameUI/game_ui.gd" id="1_smc31"]
+[ext_resource type="LabelSettings" uid="uid://bu8jorqc2s8px" path="res://Resources/button_label.tres" id="2_smc31"]
+[ext_resource type="AudioStream" uid="uid://boct87hp6wlp1" path="res://assets/sounds/powerup/health_16.wav" id="4_0u7gi"]
+
+[node name="GameUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_smc31")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+color = Color(0, 0, 0.14117648, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_right = 18
+
+[node name="HealthBar" parent="ColorRect/MarginContainer" instance=ExtResource("1_mjubw")]
+custom_minimum_size = Vector2(128, 18)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="ColorRect/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "000000000"
+label_settings = ExtResource("2_smc31")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_0u7gi")
+
+[connection signal="died" from="ColorRect/MarginContainer/HealthBar" to="." method="_on_health_bar_died"]

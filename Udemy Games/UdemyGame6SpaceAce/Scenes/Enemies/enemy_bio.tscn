@@ -1,0 +1,170 @@
+[gd_scene load_steps=24 format=3 uid="uid://y5xpcptclia0"]
+
+[ext_resource type="PackedScene" uid="uid://wq6835hi0kjj" path="res://Scenes/Enemies/enemy_ship.tscn" id="1_ngnaw"]
+[ext_resource type="Texture2D" uid="uid://d35dgeds5jf3u" path="res://assets/ships/biomech_1.png" id="2_4wa6q"]
+[ext_resource type="Texture2D" uid="uid://pt8bc3smj0ji" path="res://assets/ships/biomech_2.png" id="3_ouwag"]
+[ext_resource type="Texture2D" uid="uid://bc4a1g43qt2rp" path="res://assets/ships/biomech_3.png" id="4_e1qi2"]
+[ext_resource type="Texture2D" uid="uid://cydbbwru8lljc" path="res://assets/ships/biomech_4.png" id="5_uqrxd"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ngnaw"]
+radius = 16.0
+height = 46.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ggsa7"]
+atlas = ExtResource("2_4wa6q")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_60tmh"]
+atlas = ExtResource("2_4wa6q")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2v4oh"]
+atlas = ExtResource("2_4wa6q")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t2nvm"]
+atlas = ExtResource("2_4wa6q")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k3d6e"]
+atlas = ExtResource("3_ouwag")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uau4i"]
+atlas = ExtResource("3_ouwag")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kuuk3"]
+atlas = ExtResource("3_ouwag")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_52yb3"]
+atlas = ExtResource("3_ouwag")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6vios"]
+atlas = ExtResource("4_e1qi2")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w4wye"]
+atlas = ExtResource("4_e1qi2")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wgle1"]
+atlas = ExtResource("4_e1qi2")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jxavp"]
+atlas = ExtResource("4_e1qi2")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ch1ic"]
+atlas = ExtResource("5_uqrxd")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4crp5"]
+atlas = ExtResource("5_uqrxd")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y6wq8"]
+atlas = ExtResource("5_uqrxd")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lvcmn"]
+atlas = ExtResource("5_uqrxd")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yaf61"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ggsa7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_60tmh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2v4oh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t2nvm")
+}],
+"loop": true,
+"name": &"bio1",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k3d6e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uau4i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kuuk3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_52yb3")
+}],
+"loop": true,
+"name": &"bio2",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6vios")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w4wye")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wgle1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jxavp")
+}],
+"loop": true,
+"name": &"bio3",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ch1ic")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4crp5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y6wq8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lvcmn")
+}],
+"loop": true,
+"name": &"bio4",
+"speed": 10.0
+}]
+
+[node name="EnemyBio" instance=ExtResource("1_ngnaw")]
+shoots_at_player = true
+bullet_wait_time = 2.0
+bullet_wait_time_var = 0.2
+
+[node name="HealthBar" parent="." index="0"]
+offset_left = -14.0
+offset_top = -24.0
+offset_right = 14.0
+offset_bottom = -22.0
+
+[node name="Booms2" type="Node2D" parent="." index="2"]
+position = Vector2(0, 6)
+
+[node name="Booms3" type="Node2D" parent="." index="3"]
+position = Vector2(0, -12)
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+shape = SubResource("CapsuleShape2D_ngnaw")
+
+[node name="AnimatedSprite2D" parent="." index="7"]
+sprite_frames = SubResource("SpriteFrames_yaf61")
+animation = &"bio4"
