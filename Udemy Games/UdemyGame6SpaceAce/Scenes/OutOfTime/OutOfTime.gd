@@ -6,5 +6,5 @@ extends Node
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	await get_tree().create_timer(life_s).timeout
+	await get_tree().create_timer(life_s, false).timeout
 	get_parent().queue_free()

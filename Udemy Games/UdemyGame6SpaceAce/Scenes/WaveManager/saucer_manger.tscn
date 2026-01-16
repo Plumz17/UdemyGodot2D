@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://cbit5dm2kd1r"]
+
+[ext_resource type="Script" uid="uid://on8l2roupu6q" path="res://Scenes/WaveManager/saucer_manger.gd" id="1_4agjn"]
+
+[sub_resource type="Curve2D" id="Curve2D_d1pk1"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -40, 223.19044, -140, 108.253944, 140, -108.253944, 312, 115.80951, 0, 0, 0, 0, 687, 226.6825)
+}
+point_count = 3
+
+[sub_resource type="Curve2D" id="Curve2D_7rapy"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -48, 110, -74, 106, 74, -106, 315, 241, 0, 0, 0, 0, 753, 125)
+}
+point_count = 3
+
+[sub_resource type="Curve2D" id="Curve2D_4agjn"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -40, 226, -235, 13.095236, 235, -13.095236, 293, 87, 0, 0, 0, 0, 736, 252)
+}
+point_count = 3
+
+[node name="SaucerManger" type="Node2D"]
+script = ExtResource("1_4agjn")
+
+[node name="Paths" type="Node2D" parent="."]
+
+[node name="Path2D3" type="Path2D" parent="Paths"]
+position = Vector2(0, -36.65455)
+scale = Vector2(1, 1.1454548)
+curve = SubResource("Curve2D_d1pk1")
+
+[node name="Path2D" type="Path2D" parent="Paths"]
+curve = SubResource("Curve2D_7rapy")
+
+[node name="Path2D2" type="Path2D" parent="Paths"]
+position = Vector2(0, -36.65455)
+scale = Vector2(1, 1.1454548)
+curve = SubResource("Curve2D_4agjn")
+
+[node name="SpawnTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="EnemyWave" load_steps=3 format=3 uid="uid://dp06s13ym8kcj"]
+
+[ext_resource type="PackedScene" uid="uid://y5xpcptclia0" path="res://Scenes/Enemies/enemy_bio.tscn" id="1_2t5ra"]
+[ext_resource type="Script" uid="uid://c2d6wkej1c833" path="res://Classes/EnemyWave.gd" id="2_elp8s"]
+
+[resource]
+script = ExtResource("2_elp8s")
+enemy_scene = ExtResource("1_2t5ra")
+speed = 120.0
+gap = 1.0
+number = 7
+metadata/_custom_type_script = "uid://c2d6wkej1c833"

@@ -9,6 +9,8 @@ signal on_create_powerup(position: Vector2, powerup_type: PowerUp.PowerUpType)
 signal on_create_powerup_random(position: Vector2)
 signal on_create_bullet(position: Vector2, direction: Vector2, speed: float, bullet_type: BulletBase.BulletType)
 signal on_create_homing_missile(pos: Vector2)
+signal on_player_died
+
 
 func emit_on_player_hit(v: int) -> void:
 	on_player_hit.emit(v)
@@ -32,6 +34,8 @@ func emit_on_create_bullet(position: Vector2, direction: Vector2, speed: float, 
 	on_create_bullet.emit(position, direction, speed, bullet_type)
 	
 	
+func emit_on_player_died():
+	on_player_died.emit()
 
 func emit_on_create_homing_missile(pos: Vector2):
 	on_create_homing_missile.emit(pos)

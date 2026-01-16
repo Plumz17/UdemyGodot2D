@@ -1,4 +1,5 @@
 extends EnemyBase
+class_name EnemyShip
 
 @export var shoots_at_player: bool = false
 @export var aims_at_player: bool = false
@@ -47,3 +48,6 @@ func die() -> void:
 	if randf() < power_up_chance:
 		SignalHub.emit_on_create_powerup_random(global_position)
 	super.die()
+
+func setup(speed: float) -> void:
+	_speed = speed

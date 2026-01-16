@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b4on2i2yykp6r"]
+[gd_scene load_steps=11 format=3 uid="uid://b4on2i2yykp6r"]
 
 [ext_resource type="PackedScene" uid="uid://cdf2n2vvpqpq3" path="res://Scenes/LevelBg/LevelBg.tscn" id="1_3hkb6"]
 [ext_resource type="Script" uid="uid://b4rxhyvmr78ew" path="res://Scenes/Level/level.gd" id="1_8gphe"]
@@ -6,14 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://cs7twesq7bmwk" path="res://Scenes/Player/Player.tscn" id="3_4dwx7"]
 [ext_resource type="PackedScene" uid="uid://c8pkpg6y6ly4y" path="res://Scenes/ObjectMaker/ObjectMaker.tscn" id="4_k2uda"]
 [ext_resource type="AudioStream" uid="uid://t0l7khnjnye0" path="res://assets/sounds/loops/Mercury.wav" id="5_ksici"]
-[ext_resource type="PackedScene" uid="uid://wy3w0esvxgg2" path="res://Scenes/Enemies/enemy_saucer.tscn" id="8_lvwdj"]
+[ext_resource type="PackedScene" uid="uid://dmtlgpj6l8xy5" path="res://Scenes/GameUI/game_over_ui.tscn" id="8_aei0q"]
 [ext_resource type="PackedScene" uid="uid://bnl3htl5rh5fj" path="res://Scenes/GameUI/game_ui.tscn" id="8_t3e81"]
-
-[sub_resource type="Curve2D" id="Curve2D_aei0q"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 11, 188, 0, 0, 0, 0, 649, 190)
-}
-point_count = 2
+[ext_resource type="PackedScene" uid="uid://5pplofs6ypp8" path="res://Scenes/WaveManager/wave_manager.tscn" id="9_lvwdj"]
+[ext_resource type="PackedScene" uid="uid://cbit5dm2kd1r" path="res://Scenes/WaveManager/saucer_manger.tscn" id="10_aei0q"]
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_8gphe")
@@ -36,8 +32,8 @@ autoplay = true
 
 [node name="GameUI" parent="CanvasLayer" instance=ExtResource("8_t3e81")]
 
-[node name="Path2D" type="Path2D" parent="."]
-curve = SubResource("Curve2D_aei0q")
+[node name="GameOverUI" parent="CanvasLayer" instance=ExtResource("8_aei0q")]
 
-[node name="EnemySaucer" parent="Path2D" instance=ExtResource("8_lvwdj")]
-position = Vector2(11, 188)
+[node name="WaveManager" parent="." instance=ExtResource("9_lvwdj")]
+
+[node name="SaucerManger" parent="." instance=ExtResource("10_aei0q")]
