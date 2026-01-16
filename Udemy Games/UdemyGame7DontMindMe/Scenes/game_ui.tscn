@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cmdq4qud5hojy"]
 
 [ext_resource type="Script" uid="uid://blty1gbau4523" path="res://Scenes/game_ui.gd" id="1_bw2rt"]
-[ext_resource type="FontFile" uid="uid://ce57nte4b14vl" path="res://assets/fonts/LuckiestGuy-Regular.ttf" id="1_gek4i"]
+[ext_resource type="FontFile" uid="uid://ce57nte4b14vl" path="res://Assets/fonts/LuckiestGuy-Regular.ttf" id="1_gek4i"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_bw2rt"]
 font = ExtResource("1_gek4i")
@@ -17,6 +17,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_bw2rt")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
