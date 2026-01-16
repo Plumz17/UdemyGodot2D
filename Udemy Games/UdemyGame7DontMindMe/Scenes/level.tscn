@@ -1,13 +1,15 @@
-[gd_scene load_steps=5 format=4 uid="uid://wv8007jjj2ws"]
+[gd_scene load_steps=7 format=4 uid="uid://wv8007jjj2ws"]
 
 [ext_resource type="PackedScene" uid="uid://cmdq4qud5hojy" path="res://Scenes/game_ui.tscn" id="1_tumq0"]
 [ext_resource type="TileSet" uid="uid://1ot71ahcnjgv" path="res://Resources/level_tiles.tres" id="2_k5f4k"]
 [ext_resource type="PackedScene" uid="uid://dcybay32l2s7i" path="res://Scenes/npc.tscn" id="3_6phgx"]
+[ext_resource type="PackedScene" uid="uid://dgpk062sq2gvl" path="res://Scenes/waypoint.tscn" id="4_81xng"]
+[ext_resource type="PackedScene" uid="uid://cak0yqjnvf4rp" path="res://Scenes/player.tscn" id="5_wqkje"]
 
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_k5f4k"]
-vertices = PackedVector2Array(296.89063, 400.22656, 704.77344, 391.22656, 701.2031, 559.0469, 206.25781, 561.9297, 211.25781, 370.29688, 299.10156, 187.0625, 612.14844, 140, 612.84375, 185.0625, 145.88281, 140, 143.10938, 368.28125)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(0, 3, 4, 5), PackedInt32Array(6, 7, 5, 8), PackedInt32Array(9, 8, 5, 4)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(136, 130, 133, 378, 201, 380, 196, 572, 711, 569, 715, 381, 307, 390, 309, 197, 623, 195, 622, 130)])
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_6phgx"]
+vertices = PackedVector2Array(848.1406, 398.53125, 845.14844, 199.27344, 1012.78125, 203.72656, 1005.21094, 557.96094, 211.9375, 555.03125, 752.28125, 403.0703, 521.15625, 396.15625, 313.04688, 392.84375, 210.95313, 365.71875, 311.95313, 186.10938, 140.07813, 367.70313, 141.90625, 141.96094, 751.03906, 140.03125, 517.84375, 183.89063)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(0, 3, 4, 5), PackedInt32Array(6, 5, 4, 7), PackedInt32Array(7, 4, 8, 9), PackedInt32Array(8, 10, 11, 9), PackedInt32Array(9, 11, 12, 13), PackedInt32Array(13, 12, 5, 6)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(132, 132, 761, 130, 762.22705, 392.58734, 838, 389, 835, 189, 1023, 194, 1015, 568, 202, 565, 201, 376, 130, 378)])
 
 [node name="Level" type="Node2D"]
 
@@ -32,8 +34,29 @@ tile_set = ExtResource("2_k5f4k")
 [node name="Floors" type="TileMapLayer" parent="Tiles"]
 tile_set = ExtResource("2_k5f4k")
 
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
-navigation_polygon = SubResource("NavigationPolygon_k5f4k")
-
 [node name="NPC" parent="." instance=ExtResource("3_6phgx")]
 position = Vector2(646, 423)
+patriol_points = NodePath("../Path")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_6phgx")
+
+[node name="Polygon2D" type="Polygon2D" parent="NavigationRegion2D"]
+position = Vector2(1210.233, 359.85098)
+polygon = PackedVector2Array(-888.23303, -163.85098, -702.23303, -165.85098, -699.23303, 26.149017, -887.23303, 23.149017)
+
+[node name="Path" type="Node2D" parent="."]
+
+[node name="Waypoint" parent="Path" instance=ExtResource("4_81xng")]
+position = Vector2(209, 166)
+
+[node name="Waypoint2" parent="Path" instance=ExtResource("4_81xng")]
+position = Vector2(626, 165)
+
+[node name="Waypoint3" parent="Path" instance=ExtResource("4_81xng")]
+position = Vector2(630, 485)
+
+[node name="Waypoint4" parent="Path" instance=ExtResource("4_81xng")]
+position = Vector2(267, 448)
+
+[node name="Player" parent="." instance=ExtResource("5_wqkje")]

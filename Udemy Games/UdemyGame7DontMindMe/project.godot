@@ -13,7 +13,7 @@ config_version=5
 config/name="UdemyGame7DontMindMe"
 run/main_scene="uid://buktaetvfdpkf"
 config/features=PackedStringArray("4.5", "Mobile")
-config/icon="res://icon.svg"
+config/icon="uid://b7g77vtxtc8h2"
 
 [autoload]
 
