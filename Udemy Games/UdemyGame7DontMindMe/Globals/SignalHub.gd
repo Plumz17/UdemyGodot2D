@@ -1,11 +1,17 @@
 extends Node
+signal on_pickup_collected
+signal on_show_exit
+signal on_exit
+signal on_player_died
 
+func emit_on_pickup_collected() -> void:
+	on_pickup_collected.emit()
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+func emit_on_show_exit() -> void:
+	on_show_exit.emit()
 
+func emit_exit() -> void:
+	on_exit.emit()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func emit_on_player_died() -> void:
+	on_player_died.emit()

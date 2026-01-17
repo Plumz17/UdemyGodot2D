@@ -14,8 +14,6 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Arr
 outlines = Array[PackedVector2Array]([PackedVector2Array(132, 132, 761, 130, 762.22705, 392.58734, 838, 389, 835, 189, 1023, 194, 1015, 568, 202, 565, 201, 376, 130, 378)])
 
 [node name="Level" type="Node2D"]
-metadata/_edit_horizontal_guides_ = [-117.0, 750.0, -354.0]
-metadata/_edit_vertical_guides_ = [1282.0]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -65,12 +63,6 @@ position = Vector2(267, 448)
 
 [node name="Player" parent="." instance=ExtResource("5_wqkje")]
 position = Vector2(225, 264)
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-limit_left = -56
-limit_top = -117
-limit_right = 1282
-limit_bottom = 750
 
 [node name="Exit" parent="." instance=ExtResource("6_0f350")]
 position = Vector2(925, 253)

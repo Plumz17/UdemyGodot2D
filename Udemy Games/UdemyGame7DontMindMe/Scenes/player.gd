@@ -1,10 +1,10 @@
 extends CharacterBody2D
 class_name Player
 
-const SPEED: float = 200.0
+const SPEED: float = 150.0
 const GROUP_NAME: String = "player"
 # Called when the node enters the scene tree for the first time.
-func _ready() -> void:
+func _enter_tree() -> void:
 	add_to_group(GROUP_NAME)
 
 

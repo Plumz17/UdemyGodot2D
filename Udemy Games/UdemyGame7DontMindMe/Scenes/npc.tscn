@@ -1,10 +1,63 @@
-[gd_scene load_steps=4 format=3 uid="uid://dcybay32l2s7i"]
+[gd_scene load_steps=14 format=3 uid="uid://dcybay32l2s7i"]
 
 [ext_resource type="Texture2D" uid="uid://bjg01ur2h5jda" path="res://Assets/images/soldier1_gun.png" id="1_acqhf"]
 [ext_resource type="Script" uid="uid://iymsqn1np5mt" path="res://Scenes/npc.gd" id="1_xxsvc"]
+[ext_resource type="AudioStream" uid="uid://2wjqlkthho5i" path="res://Assets/sounds/gasp1.wav" id="3_1ig1v"]
+[ext_resource type="AudioStream" uid="uid://dwyjuf85okkum" path="res://Assets/sounds/gasp2.wav" id="4_6atyd"]
+[ext_resource type="AudioStream" uid="uid://cocn5jj0j8vxj" path="res://Assets/sounds/gasp3.wav" id="5_2xkex"]
+[ext_resource type="Texture2D" uid="uid://dc2tjc8pttt5h" path="res://Assets/images/running_1.png" id="6_6atyd"]
+[ext_resource type="AudioStream" uid="uid://btx8qoehflgmb" path="res://Assets/sounds/sfx_wpn_laser2.wav" id="7_2xkex"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xxsvc"]
 height = 34.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_8gudg"]
+streams_count = 3
+stream_0/stream = ExtResource("3_1ig1v")
+stream_1/stream = ExtResource("4_6atyd")
+stream_2/stream = ExtResource("5_2xkex")
+
+[sub_resource type="Animation" id="Animation_6atyd"]
+resource_name = "alert"
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_2xkex"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8gudg"]
+_data = {
+&"RESET": SubResource("Animation_2xkex"),
+&"alert": SubResource("Animation_6atyd")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2xkex"]
+radius = 11.0
+height = 38.0
 
 [node name="NPC" type="CharacterBody2D"]
 collision_layer = 0
@@ -12,6 +65,7 @@ collision_mask = 0
 script = ExtResource("1_xxsvc")
 
 [node name="DebugLabel" type="Label" parent="."]
+visible = false
 offset_left = -25.0
 offset_top = -114.0
 offset_right = 47.0
@@ -30,3 +84,35 @@ shape = SubResource("CapsuleShape2D_xxsvc")
 
 [node name="NavAgent" type="NavigationAgent2D" parent="."]
 debug_enabled = true
+
+[node name="PlayerDetect" type="RayCast2D" parent="."]
+target_position = Vector2(400, 0)
+
+[node name="GaspSound" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_8gudg")
+
+[node name="Warning" type="Sprite2D" parent="."]
+visible = false
+rotation = 1.5707964
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("6_6atyd")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_8gudg")
+}
+
+[node name="ShootTimer" type="Timer" parent="."]
+wait_time = 1.5
+autostart = true
+
+[node name="LaserSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_2xkex")
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CapsuleShape2D_2xkex")
+
+[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
